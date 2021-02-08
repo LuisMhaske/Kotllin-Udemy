@@ -1,11 +1,15 @@
-package oops
+package constructor
 
-class Person {
-    var name: String = "Kanchan" //properties
-    var age: Int = 26 //properties
+class Person(val name: String, var age: Int) { //standard kotlin constructor
+    /* different way of building constructor
+    val name: String = name
+    var age: Int = age
 
-    //adding functionality to our person class by creating methods
-    //methods are basically just function inside a class
+        init {
+          this.name = name
+          this.age = age
+          println("object created")
+      }*/
     fun speak() {
         println("Hello")
     }// basic method you can have with no parameters, doesn't return any value it just performs some kind of computation
@@ -15,15 +19,16 @@ class Person {
     fun greet(name: String) {
         println("Hello $name!")
     }
+
     /*fun getYearofBirth(): Int{
         return 2021 -age
     }*/
-    fun getYearofBirth() = 2021 -age-1
+    fun getYearofBirth() = 2021 - age - 1
 
 }
 
 fun main(args: Array<String>) {
-    val person = Person()
+    val person = Person("Kanchan", 26)
     person.speak()
     person.greet("world")
     println(person.age)
@@ -32,4 +37,3 @@ fun main(args: Array<String>) {
 
 
 }
-
