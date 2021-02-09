@@ -5,7 +5,7 @@ class House(val height: Double, val color: String,val price: Int = 5000000) {
     fun print(){
         println("House details [Height: $height, Color: $color, Price: $price]")
     }
-    fun sum(i: Int, j: Int){
+    fun sum(i: Int, j: Int =2){
         println(i+j)
     }
 
@@ -17,7 +17,7 @@ fun main() {
     val house3 = House(color = "yellow",height = 6.8)
 
     house.print()
-    house.sum(1,2)
+    house.sum(1)
     house2.print()
     house3.print()
 
