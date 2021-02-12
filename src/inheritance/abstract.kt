@@ -21,6 +21,11 @@ class Employee2(override val name: String,override var age: Int): Person2(name, 
         println("Hi there! I am a Employee.")
     }
 
+    override fun greet(name: String){
+        super.greet(name)
+        println("Howdy $name")
+    }
+
     fun receivePayment(){
         println("Received payment")
     }
