@@ -1,26 +1,35 @@
 package dataClasses
 
+import com.sun.org.apache.xpath.internal.operations.Bool
+
 
 interface Lendable{
-    fun borrow()
-    fun returnBook()
+    fun borrow():Boolean
+    fun returnBook():Boolean
 }
 abstract class InventoryItem(val title:String,val genre: String,val yearofpublication: Int, var borrow: Boolean): Lendable {
-    override fun borrow() {
-        if (!borrow) {
-            borrow = true
-        }
-        else{
+    override fun borrow():Boolean {
+        if (borrow) {
             println("Book already borrowed")
-
+            println("Avaliablity = $")
+            return false
+        } else {
+            println("The book is available")
+            borrow = true
+            println("Book Borrowed successfully")
+            return true
         }
     }
 
-    override fun returnBook() {
-        if (borrow){
-            borrow = false
-        }else{
-            println("Book available")
+    override fun returnBook():Boolean {
+        if (!borrow){
+            println("The book cannot be returned as it was not borrowed")
+            return false
+        }
+        else{
+            println("Book Returned")
+            borrow =false
+            return true
         }
     }
 
@@ -32,8 +41,9 @@ abstract class InventoryItem(val title:String,val genre: String,val yearofpublic
 }
 class LibraryBook(title:String, val author:String, genre: String, yearofpublication: Int): InventoryItem(title,genre,yearofpublication,false){
 
-    fun read(){
+    fun read():String{
         println("Reading....")
+        return "still reading..."
     }
     override fun copy(): InventoryItem {
         val copy = LibraryBook(title, author,genre,yearofpublication)
@@ -47,8 +57,9 @@ class LibraryDVD(title: String,
                  val length: Int,
                  yearofpublication: Int) : InventoryItem(title, genre, yearofpublication, false) {
 
-    fun watch() {
-        println("Watching $title...")
+    fun watch(): String {
+        println("Watching ")
+        return title
     }
 
     override fun copy(): InventoryItem {
@@ -60,9 +71,12 @@ class LibraryDVD(title: String,
 }
 fun main() {
     val lbook = LibraryBook("Love","Luis","romance",2021)
-    println(lbook)
-    println(lbook.borrow())
-    println(lbook)
-    println(lbook.returnBook())
-    println(lbook)
+    val dvd = LibraryDVD("Die hard","Action",2, 1995)
+    println(message = lbook)
+    println(message = lbook.borrow())
+    println(message = lbook.read())
+    println(message = lbook.returnBook())
+    println(message = lbook)
+    println(message = dvd.watch())
+
 }
