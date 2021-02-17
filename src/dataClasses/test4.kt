@@ -1,7 +1,5 @@
 package dataClasses
 
-import com.sun.org.apache.xpath.internal.operations.Bool
-
 
 interface Lendable{
     fun borrow():Boolean

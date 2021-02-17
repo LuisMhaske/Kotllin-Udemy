@@ -1,7 +1,5 @@
 package inheritance
 
-import kotlin.reflect.jvm.internal.impl.renderer.OverrideRenderingPolicy
-
 open class Person(open val name: String, open var age: Int) {
 
     init {
